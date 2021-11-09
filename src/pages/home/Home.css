@@ -1,0 +1,39 @@
+@import "../../Style.css";
+.column {
+  background: white;
+  display: flex;
+  flex: 1;
+  flex-direction:column;
+  column-count: 4;
+}
+
+.main-column {
+  flex: 2;
+  
+}
+
+/* Screen adjustmets*/
+/* Small screens */
+
+@media only screen and (max-width: 600px) {
+  .columns {
+    display: list-item;
+    column-count: 1;
+  }
+  .column {
+    padding: 0em;
+  }
+}
+
+/* Large screens */
+
+@media only screen and (min-width: 600px) {
+  .columns {
+    display: flex;
+    column-count: 4;
+  }
+  .column {
+    padding: 0.8em;
+
+  }
+}

@@ -1,0 +1,107 @@
+@import "../../Style.css";
+
+.navbar {
+  height: 5em;
+  width: 100%;
+  background-color: var(--gray6);
+  color: white;
+  top: 0;
+  position: fixed;
+  z-index: 10;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar-item {
+  height: 100%;
+  width: 11em;
+  justify-content: center;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.navbar-item:hover,
+.navbar-item:active {
+  box-shadow: 1px 1px 4px 2px var(--shadow);
+}
+
+.nav-link {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  filter: grayscale(30%) opacity(0.7);
+  transition: var(--transition-speed);
+}
+
+.nav-link:hover {
+  transform: scale(1.08);
+  text-shadow: 0.1px 0.1px;
+}
+
+.navbar-item .nav-link:active {
+  transform: scale(1);
+  text-shadow: 0px 0px;
+}
+
+.navbar-item .nav-link:active {
+  transform: scale(1);
+  text-shadow: 0px 0px;
+}
+.navlink-text {
+  margin: 1rem;
+}
+
+.navlink-text {
+  height: auto;
+  width: auto;
+}
+/*Icons*/
+
+.nav-link svg {
+  width: 2rem;
+  margin-left: 20px;
+}
+
+/* Screen adjustmets*/
+/* Small screens */
+
+@media only screen and (max-width: 600px) {
+  .navlink-text {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    transition: visibility 0s, opacity 1.5s linear;
+  }
+}
+
+/* Large screens */
+
+@media only screen and (min-width: 600px) {
+  .navlink-text {
+    height: auto;
+    width: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 1.5s linear;
+  }
+
+  .navbar-nav-nametag {
+    margin-left: auto;
+    display: block;
+    min-width: 20em;
+  }
+}

@@ -1,0 +1,35 @@
+@import "../../Style.css";
+
+/* Logo Animation */
+
+@keyframes color-rotate {
+    from {
+      filter: hue-rotate(0deg);
+    }
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+  
+.main-header {
+  padding: 1em;
+  clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 65%, 0 0);
+  background: var(--bg-nav);
+  margin-bottom: 1em;
+  padding-bottom: 3.5em;
+  text-align: center;
+}
+
+.header-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.header-logo:hover {
+  animation: color-rotate 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}

@@ -1,0 +1,21 @@
+{
+    "Greetings": {
+        "Welcome": "Welcome {{name}}"
+    },
+    "Normalize":"Normalize",
+    "Alternative":"Alternative",
+    "Home":"Home",
+    "Servicedesk":"Servicedesk",
+    "About":"About",
+    "LanguageName":"English",
+    "Language":"Language",
+    "Theme":"Theme",
+    "Light":"Light",
+    "Dark":"Dark",
+    "Dashboard":"Dashboard",
+    "Tasks":"Tasks",
+    "Organisation":"Organisation",
+    "Settings":"Settings",
+    "Services":"Diensten"
+    
+}

@@ -1,0 +1,20 @@
+{
+    "Greetings": {
+        "Welcome": "Welkom {{name}}"
+    },
+    "Normalize": "Normaal",
+    "Alternative": "Alternatief",
+    "Home": "Start",
+    "Servicedesk": "Servicedesk",
+    "About": "Over ons",
+    "LanguageName": "Nederlands",
+    "Language": "Taal",
+    "Theme": "Thema",
+    "Light": "Licht",
+    "Dark": "Donker",
+    "Dashboard": "Dashboard",
+    "Tasks": "Taken",
+    "Organisation": "Organisatie",
+    "Settings": "Instellingen",
+    "Services": "Services"
+}
