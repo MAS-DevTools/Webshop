@@ -6,7 +6,7 @@ const AppSettings = {
   NL:"nl",
   EN:"en",
   Pw:"",
-  H_A_I:""
+  H_A_I:"",
 };
 
 export default AppSettings;

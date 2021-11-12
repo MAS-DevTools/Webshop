@@ -41,7 +41,21 @@ export class Base {
           : false;
 
       if (playSound) {
-        document.getElementById(id + CSSProps.ID.Audio).play();
+        var promise = document.getElementById(id + CSSProps.ID.Audio).play();
+
+        if (promise !== undefined) {
+          
+          promise.then(_ => {
+            // Autoplay started!
+           
+          }).catch(error => {
+            console.log(error);
+            // Autoplay was prevented.
+          });
+          return;
+        }else{
+          console.log("promise undefined");
+        }
       }
     }
   }

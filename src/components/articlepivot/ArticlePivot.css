@@ -1,0 +1,15 @@
+@import "../../Style.css";
+
+
+/* Screen adjustmets*/
+/* Small screens */
+
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Large screens */
+
+@media only screen and (min-width: 600px) {
+ 
+}

@@ -10,7 +10,7 @@ import Paths from "../../../data/constants/Paths";
 function getIcon() {
   let cachedValue = localStorage.getItem(LocalStorageProps.Volume);
   if (Validator.prototype.isEmpty(cachedValue)) {
-    localStorage.setItem(LocalStorageProps.Volume, CSSProps.NavBar.VolumeOn);
+    localStorage.setItem(LocalStorageProps.Volume, CSSProps.UserControl.VolumeOff);
     return localStorage.getItem(LocalStorageProps.Volume);
   }
   return cachedValue;

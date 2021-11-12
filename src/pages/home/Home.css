@@ -1,17 +1,18 @@
 @import "../../Style.css";
-.column {
-  background: white;
-  display: flex;
-  flex: 1;
+.column { 
+  display:flex;
+  flex: 1;  
   flex-direction:column;
-  column-count: 4;
 }
-
-.main-column {
-  flex: 2;
-  
+.column .cell{  
+  flex: 1;  
+  min-height: 60em;
 }
-
+.spin{
+  display: block;
+  margin:  auto;
+  border-color: var(--border-color);
+}
 /* Screen adjustmets*/
 /* Small screens */
 
@@ -25,9 +26,30 @@
   }
 }
 
-/* Large screens */
+@media only screen and (min-width: 600px) and (max-width: 900px){
+  .columns {
+    display: list-item;
+    column-count: 1;
+  }
+  .column {
+    padding: 0em;
 
-@media only screen and (min-width: 600px) {
+  }
+}
+/* Large screens */
+@media only screen and (min-width: 900px) and (max-width: 1600px){
+  .columns {
+    display:block;
+    column-count: 2;
+    
+  }
+  .column {
+    padding: 0em;
+    min-height: 232em;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
   .columns {
     display: flex;
     column-count: 4;

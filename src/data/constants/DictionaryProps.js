@@ -17,7 +17,17 @@ const DictionaryProps = {
   Tasks:"Tasks",
   Organisation:"Organisation",
   Settings:"Settings",
-  Services:"Services"
+  Services:"Services",
+  Error:"Error",
+  Price:"Price",
+  Sum:"Sum",
+  Total:"Total",
+  Description:"Description",
+  NotInStock:"NotInStock",
+  StockAlmostEmpty:"AlmostEmptyStock",
+  InStock:"InStock",
+  NoStockInfo:"NoStockInfo",
+  AddToCart:"AddToCart"
 };
 
 export default DictionaryProps;

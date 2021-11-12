@@ -16,5 +16,15 @@
     "Tasks": "Taken",
     "Organisation": "Organisatie",
     "Settings": "Instellingen",
-    "Services": "Services"
+    "Services": "Services",
+    "Error":"Er is wat fout gegaan.",
+    "Price":"Prijs",
+    "Sum":"Aantal",
+    "Total":"Totaal",
+    "Description":"Beschrijving",
+    "NotInStock":"Niet op voorraad.",
+    "StockAlmostEmpty":"In voorraad, Bijna op.",
+    "InStock":"In voorraad.",
+    "NoStockInfo":"Voorraad info niet beschikbaar.",
+    "AddToCart":"Toevoegen"
 }

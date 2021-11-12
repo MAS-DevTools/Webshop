@@ -40,6 +40,15 @@ const CSSProps = {
     Text: "navlink-text ",
     NameTag: "navbar-nav-nametag ",
   },
+  CatogoryNavbar: {
+    Bar: "catogorynavbar ",
+    Navigation: "catogorynavbar-nav ",
+    Item: "catogorynavbar-item ",
+    Link: "catogorynav-link ",
+    Icon: "catogorynav-icon ",
+    Text: "catogorynavlink-text ",
+    NameTag: "catogorynavbar-nav-nametag ",
+  },
   SideBar: {
     Bar: "sidebar ",
     Navigation: "sidebar-nav ",
@@ -70,22 +79,53 @@ const CSSProps = {
   },
   Article:{
     Area:"article ",
-    FirstArticle:"first-article ",
     Figure:"article-figure",
     Image:"article-image",
     Body:"article-body",
     Title:"article-title",
     Content:"article-content",
-    Info:"article-info"
+    Info:"article-info",
+    FloatL:"floatL",
+    FloatR:"floatR",
+    BtnAddToCart:"btnAddToCart",
+    Disabled:"disabled"
 
+  },
+  Counter:{
+    Area:"counter",
+    Button:"btn",
+    Count:"count",
+    Price:"price",
+    Sum:"sum",
+    ContainerL:"containerL",
+    ContainerR:"containerR",
+    Label:"label",
+    LabelResult:"labelResult",
+    CenterText:"centerText"
   },
   Footer:{
     Area:"footer"
   },
-  About:{
-    Area:"about"
+  Body:{
+    Spinner:"spinner",
+    BarLoader:"BarLoader",
+    ErrorMessage:"errorMessage",
+    Pages:{
+      Home:{
+        Columns:"columns",
+        Column:"column",
+        Cell:"cell"
+      },
+      About:{
+        Area:"about"
+      }
+    }
+  },
+  Warning:{
+    Red:"red",
+    Orange:"orange",
+    Green:"green"
   }
-
 };
 
 export default CSSProps;

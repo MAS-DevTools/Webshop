@@ -7,6 +7,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.errorMessage{
+  margin: auto;
+  text-align: center;
+  color: var(--border-color);
+}
+
+.spinner{
+  margin: auto;
+  width:inherit;
+  padding: 10em;
+}
+
+.BarLoader{
+  margin: auto;
+  width: inherit;
+  padding: 2em;
+  max-height: 2em;
+}
+
 /* Scrollbars */
 body::-webkit-scrollbar {
   width: 0.75rem;
@@ -35,6 +54,7 @@ a {
 /* Themes */
 
 :root {
+  --textsize:1em;
   --gray0: #f8f8f8;
   --gray1: #dbe1e8;
   --gray2: #b2becd;

@@ -2,42 +2,56 @@
 
 .article {
   background: white;
-  color: black;
+  color: var(--gray6);
   flex: 1;
   padding: 0.8em;
   display: flex;
   flex-direction: column;
   flex-basis: auto; /* sets initial element size based on its contents  */
-  box-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  max-height: 25em;
+  box-shadow: 0 0 0 0px rgb(0 0 0 / 20%);
+  transition: all 200ms ease-out;
 }
 
 .article-body {
   display: flex;
   flex: 1;
   flex-direction: column;
+  overflow: hidden;
+  
 }
 
 .article-content {
-  flex: 1; /* This will make the content fill up the remaining space, and thus push the information bar at the bottom */
+  overflow: auto;
 }
 
 .article-image {
   width: 100%;
+  height: auto;
+  max-width: 30em;
+  max-height: 25em;
 }
+
 .article-figure {
   margin: 0.8em;
+  max-height: 25em;
+  max-width: 30em;
 }
 
 .article-title {
+  margin:0;
   padding: 0.8em 0.8em 0.8em 0.8em;
 }
 
 .article-content {
+  margin:0;
   padding: 0.8em 0.8em 0.8em 0.8em;
 }
 
 .article-info {
-  padding: 0.8em 0.8em 0.8em 0.8em;
+  margin-top:1em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
 }
 
 /* Screen adjustmets*/
@@ -46,7 +60,13 @@
 @media only screen and (max-width: 600px) {
   .article {
     margin: 0em;
+    box-shadow: 1px 1px 1px 1px var(--shadow);box-shadow: 1px 1px 1px 1px var(--shadow);
   }
+
+  .article-content {
+    height: fit-content;
+  }
+  
 }
 
 /* Large screens */
@@ -54,5 +74,84 @@
 @media only screen and (min-width: 600px) {
   .article {
     margin: 0.4em;
+    transition: var(--transition-speed);
+    
   }
+
+  .article:hover {
+    transform: scale(1.03);
+    text-shadow: 0.1px 0.1px;
+    box-shadow: 1px 1px 4px 2px var(--shadow);
+  }
+
+  .article-content {
+    flex: 1; /* This will make the content fill up the remaining space, and thus push the information bar at the bottom */
+    max-height: 20%;
+  }
+
+  .article-title {
+    min-height: 6em;
+  }
+
+  .article-body {
+    min-height: 33.33%;
+  }
+
+  
+}
+
+
+.floatL{
+  float:left;
+}
+
+.floatR{
+  float:right;
+}
+
+.btnAddToCart{
+  background-color: var(--primary);
+  border: none;
+  color: var(--secondary-textcolor);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 0 0 0px rgb(0 0 0 / 20%);
+  transition: all 200ms ease-out;
+  opacity: 0.6;
+}
+
+.disabled{
+  visibility: hidden;
+  color:#fff;
+  border-color: #a0a0a0;
+  background-color: #a0a0a0;
+}
+
+.btnAddToCart:hover {
+  transform: scale(1.03);
+  text-shadow: 0.1px 0.1px;
+  box-shadow: 1px 1px 4px 2px var(--shadow);
+  opacity: 0.9;
+}
+
+.btnAddToCart:active{
+  transform: scale(0.9);
+  text-shadow: 0.1px 0.1px;
+  box-shadow: 1px 1px 4px 2px var(--shadow);
+  opacity: 1;
+}
+
+.article-content::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+.article-content::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+.article-content::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
 }
