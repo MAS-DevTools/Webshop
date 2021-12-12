@@ -12,11 +12,10 @@
     "Theme": "Thema",
     "Light": "Licht",
     "Dark": "Donker",
-    "Dashboard": "Dashboard",
-    "Tasks": "Taken",
-    "Organisation": "Organisatie",
+    "Orders": "Mijn bestellingen",
+    "LogOut": "Uitloggen",
     "Settings": "Instellingen",
-    "Services": "Services",
+    "Products": "Producten",
     "Error":"Er is wat fout gegaan.",
     "Price":"Prijs",
     "Sum":"Aantal",
@@ -26,5 +25,6 @@
     "StockAlmostEmpty":"In voorraad, Bijna op.",
     "InStock":"In voorraad.",
     "NoStockInfo":"Voorraad info niet beschikbaar.",
-    "AddToCart":"Toevoegen"
+    "AddToCart":"Toevoegen",
+    "All":"Alles"
 }

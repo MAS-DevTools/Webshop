@@ -6,7 +6,8 @@ const Profile = () => {
   useEffect(() => {
     Base.prototype.SwitchPage(CSSProps.ID.Profile);
   });
-  return <div>Profile</div>;
+  return (
+  <div>Profile</div>);
 };
 
 export default Profile;

@@ -5,12 +5,12 @@ import DictionaryProps from "../../../data/constants/DictionaryProps";
 import LocalStorageProps from "../../../data/constants/LocalStorageProps";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import Paths from "../../../data/constants/Paths";
 import AppSettings from "../../../data/AppSettings";
 
 const ThemeControl = () => {
   const [t] = useTranslation(AppSettings.TranslationFilename);
   var alterToggleName = DictionaryProps.Alternative;
+
   useEffect(() => {
     // DOM Elements
 
@@ -25,26 +25,26 @@ const ThemeControl = () => {
     const isSolar = localStorage.getItem(LocalStorageProps.IsSolar);
 
     if (theme) {
-      
       body.classList.add(theme);
       isSolar && body.classList.add(CSSProps.Style.Alternative);
-      
+
       DeselectedButton();
-      if(theme === CSSProps.Style.Dark){
+      if (theme === CSSProps.Style.Dark) {
         darkButton.style.cssText = CSSProps.Style.ItemSelected;
-      }else{
+      } else {
         lightButton.style.cssText = CSSProps.Style.ItemSelected;
       }
-    }else{
+    } else {
       body.classList.add(CSSProps.Style.Light);
       isSolar && body.classList.add(CSSProps.Style.Alternative);
       localStorage.setItem(LocalStorageProps.Theme, CSSProps.Style.Light);
       DeselectedButton();
       lightButton.style.cssText = CSSProps.Style.ItemSelected;
+      solarButton.style.cssText = CSSProps.Style.BGThemeButton;
     }
 
     if (isSolar) {
-      solarButton.style.cssText = CSSProps.Style.BGWhite;
+      solarButton.style.cssText = CSSProps.Style.BGThemeButton;
       solarButton.innerText = t(DictionaryProps.Normalize);
     }
 
@@ -57,9 +57,9 @@ const ThemeControl = () => {
       localStorage.setItem(LocalStorageProps.Theme, CSSProps.Style.Dark);
 
       if (body.classList.contains(CSSProps.Style.Alternative)) {
-        solarButton.style.cssText = CSSProps.Style.BGDark;
+        solarButton.style.cssText = CSSProps.Style.BGThemeButton;
       } else {
-        solarButton.style.cssText = CSSProps.Style.BGPrimary;
+        solarButton.style.cssText = CSSProps.Style.BGThemeButton;
       }
     };
 
@@ -70,25 +70,23 @@ const ThemeControl = () => {
       localStorage.setItem(LocalStorageProps.Theme, CSSProps.Style.Light);
 
       if (body.classList.contains(CSSProps.Style.Alternative)) {
-        solarButton.style.cssText = CSSProps.Style.BGWhite;
+        solarButton.style.cssText = CSSProps.Style.BGThemeButton;
       } else {
-        solarButton.style.cssText = CSSProps.Style.BGPrimary;
+        solarButton.style.cssText = CSSProps.Style.BGThemeButton;
       }
     };
 
     solarButton.onclick = () => {
-      
-      
       if (body.classList.contains(CSSProps.Style.Alternative)) {
         body.classList.remove(CSSProps.Style.Alternative);
-        solarButton.style.cssText = CSSProps.Style.BGPrimary;
+        solarButton.style.cssText = CSSProps.Style.BGThemeButton;
         solarButton.innerText = t(DictionaryProps.Alternative);
         localStorage.removeItem(LocalStorageProps.IsSolar);
       } else {
         if (body.classList.contains(CSSProps.Style.Light)) {
-          solarButton.style.cssText = CSSProps.Style.BGWhite;
+          solarButton.style.cssText = CSSProps.Style.BGThemeButton;
         } else {
-          solarButton.style.cssText = CSSProps.Style.BGDark;
+          solarButton.style.cssText = CSSProps.Style.BGThemeButton;
         }
         body.classList.add(CSSProps.Style.Alternative);
         solarButton.innerText = t(DictionaryProps.Normalize);
@@ -96,7 +94,7 @@ const ThemeControl = () => {
         localStorage.setItem(LocalStorageProps.IsSolar, true);
       }
     };
-    function DeselectedButton(){
+    function DeselectedButton() {
       solarButton.style.cssText = CSSProps.Style.None;
       darkButton.style.cssText = CSSProps.Style.None;
       lightButton.style.cssText = CSSProps.Style.None;
@@ -104,26 +102,47 @@ const ThemeControl = () => {
   });
 
   return (
-    <li className={CSSProps.UserControl.Item + CSSProps.UserControl.hasDropdown}>
-      <a className={CSSProps.UserControl.Link} href={Paths.None}>
+    <li
+      className={CSSProps.UserControl.Item + CSSProps.UserControl.hasDropdown}
+    >
+      <button
+        className={CSSProps.UserControl.Link + CSSProps.Body.ClearBtnBackground}
+      >
         <Theme className={CSSProps.UserControl.Icon}></Theme>
-        <span className={CSSProps.UserControl.Text}>{t(DictionaryProps.Theme)}</span>
-      </a>
+        <span className={CSSProps.UserControl.Text}>
+          {t(DictionaryProps.Theme)}
+        </span>
+      </button>
       <ul className={CSSProps.UserControl.Dropdown}>
         <li className={CSSProps.UserControl.DropdownItem}>
-          <a id={CSSProps.Style.Light} href={Paths.None}>
-            <span className={CSSProps.UserControl.DropdownText}>{t(DictionaryProps.Light)}</span>
-          </a>
+          <button
+            id={CSSProps.Style.Light}
+            className={CSSProps.Body.ClearBtnBackground}
+          >
+            <span className={CSSProps.UserControl.DropdownText}>
+              {t(DictionaryProps.Light)}
+            </span>
+          </button>
         </li>
         <li className={CSSProps.UserControl.DropdownItem}>
-          <a id={CSSProps.Style.Dark} href={Paths.None}>
-            <span className={CSSProps.UserControl.DropdownText}>{t(DictionaryProps.Dark)}</span>
-          </a>
+          <button
+            className={CSSProps.Body.ClearBtnBackground}
+            id={CSSProps.Style.Dark}
+          >
+            <span className={CSSProps.UserControl.DropdownText}>
+              {t(DictionaryProps.Dark)}
+            </span>
+          </button>
         </li>
         <li className={CSSProps.UserControl.DropdownItem}>
-          <a id={CSSProps.Style.Alternative} href={Paths.None}>
-            <span className={CSSProps.UserControl.DropdownText}>{alterToggleName}</span>
-          </a>
+          <button
+            className={CSSProps.Body.ClearBtnBackground}
+            id={CSSProps.Style.Alternative}
+          >
+            <span className={CSSProps.UserControl.DropdownText}>
+              {alterToggleName}
+            </span>
+          </button>
         </li>
       </ul>
     </li>

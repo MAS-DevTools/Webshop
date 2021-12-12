@@ -1,103 +1,104 @@
 @import "../../Style.css";
-.counter{
-    position: relative;
-    bottom: 0;
-   }
-  
-.btn{
-    width: 1.5em;
-    height: 1.5em;
-    border-radius: 50%;
-    background-color: var(--primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    font-weight: 900;
-    color: var(--secondary-textcolor);
-    cursor: pointer;
-    float: right;
-    padding: 0.3em;
-    margin-right: 0.3em;
-    box-shadow: 0 0 0 0px rgb(0 0 0 / 20%);
-    transition: all 200ms ease-out;   
-    opacity: 0.2;
+.counter {
+  position: relative;
+  bottom: 0;
 }
 
-.count{
-    border:none;
-    width: 2em;
-    height: 2em;
-    text-align: center;
-    font-size: var(--textsize);
-    
-    font-weight: 900;
-    color: var(--gray6);
-    float: right;
-    padding-top: 0.2em;
-    text-align: center;
-    
-    margin-right: 0.3em;
-   }
-  
-.price{
-      min-width: 2em;
-      min-height: 2em;
-      width:fit-content;
-      
-      float:left;
-      padding-top: 0.8em;
-      margin-right: 0.3em;
-      justify-content: center;
-  }
-  
-.sum{
-    width: fit-content;
-    min-width: 3em;
-    
-    float:left;
-    padding-top: 0.8em;
-    margin-right: 0.3em;
-    justify-content: center;
+.btn {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background-color: var(--gray6);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: 900;
+  cursor: pointer;
+  float: right;
+  padding: 0.3em;
+  margin-left: 0.3em;
+  box-shadow: 0 0 0 0px rgb(0 0 0 / 20%);
+  transition: all 200ms ease-out;
+  opacity: 0.2;
 }
 
-.containerL{
-    width: fit-content;
-    float: left;
-    padding-left: 0.8em;
-    
+.count {
+  border: none;
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  font-size: var(--textsize);
+  font-weight: 900;
+  color: black;
+  float: right;
+  padding-top: 0.2em;
+  text-align: center;
+  margin-left: 0.3em;
 }
 
-.containerR{
-    width: fit-content;
-    float: right;
-    padding-right: 0.8em;
+.price {
+  min-width: 2em;
+  min-height: 2em;
+  width: fit-content;
+
+  float: left;
+  padding-top: 0.8em;
+  margin-right: 0.3em;
+  justify-content: center;
 }
 
-.label{
-    width: 100%;
-    font-weight: 900;
-    min-height: 1em;
+.sum {
+  width: fit-content;
+  min-width: 3em;
+
+  float: left;
+  padding-top: 0.8em;
+  margin-right: 0.3em;
+  justify-content: center;
 }
 
-.labelResult{
-    min-width: 5em;
+.containerL {
+  width: fit-content;
+  float: left;
+  padding-left: 1em;
 }
 
-.centerText{
-    text-align: center;
+.containerR {
+  width: fit-content;
+  float: right;
+  padding-right: 1em;
+}
+
+.label {
+  width: 100%;
+  font-weight: 900;
+  min-height: 1em;
+}
+
+.labelResult {
+  min-width: 5em;
+}
+
+.centerText {
+  text-align: center;
 }
 
 .btn:hover {
-    transform: scale(1.03);
-    text-shadow: 0.1px 0.1px;
-    box-shadow: 1px 1px 4px 2px var(--shadow);
-    opacity: 0.6;
+  transform: scale(1.03);
+  text-shadow: 0.1px 0.1px;
+  box-shadow: 1px 1px 4px 2px var(--shadow);
+  opacity: 0.6;
 }
 
-.btn:active{
-    transform: scale(0.5);
-    text-shadow: 0.1px 0.1px;
-    box-shadow: 1px 1px 4px 2px var(--shadow);
-    opacity: 0.9;
+.btn:active {
+  transform: scale(0.5);
+  text-shadow: 0.1px 0.1px;
+  box-shadow: 1px 1px 4px 2px var(--shadow);
+  opacity: 0.9;
+}
+
+.total-adjust {
+  margin-right: 1.1em;
 }

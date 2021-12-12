@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Base } from "../../components/Base";
 import CSSProps from "../../data/constants/CSSProps";
 import Article from "../../components/article/Article.js";
-import CatogoryNavbar from "../../components/catogorynavbar/CatogoryNavbar";
+import CategoryNavbar from "../../components/categorynavbar/CategoryNavbar";
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import DotLoader from "react-spinners/DotLoader";
@@ -39,10 +39,9 @@ const Home = () => {
         })
       .then(data =>{
           setProducts(data);
-          
         })
       .catch(exception =>{
-        console.log(LogMessage.FetchFailed, exception);
+        console.log(LogMessage.FetchFailed);
         setError(exception);
       })
       .finally(()=>{
@@ -67,34 +66,34 @@ const Home = () => {
     )
 
   return (
-    <div>
-    <CatogoryNavbar/>
+    <div className={CSSProps.Body.Pages}>
+    <CategoryNavbar/>
       <div className={CSSProps.Body.Pages.Home.Columns}>
         <div className={CSSProps.Body.Pages.Home.Column}>
           {
             products.filter(product => product.id <= 3).map(product =>  (
-              <Article parentClassName={CSSProps.Body.Pages.Home.Cell} key={product.id}  to="www.google.nl" img={product.image} info={product.catogory} content={product.description} title={product.title} stock={product.rating.count} price={product.price}/>//We are using [product.rating.count] for the stock property
+              <Article parentClassName={CSSProps.Body.Pages.Home.Cell} key={product.id} product={product} to="www.google.nl" />//We are using [product.stock] for the stock property
             ))
           }
         </div>
         <div className={CSSProps.Body.Pages.Home.Column}>
           {
             products.filter(product => product.id >= 4 && product.id <= 6).map(product =>  (
-              <Article parentClassName={CSSProps.Body.Pages.Home.Cell} key={product.id}   to="www.google.nl" img={product.image} info={product.catogory} content={product.description} title={product.title} stock={product.rating.count} price={product.price}/>
+              <Article parentClassName={CSSProps.Body.Pages.Home.Cell} key={product.id} product={product} to="www.google.nl" />
             ))
           }
         </div>
         <div className={CSSProps.Body.Pages.Home.Column}>
           {
             products.filter(product => product.id >= 7 && product.id <= 9).map(product =>  (
-              <Article parentClassName={CSSProps.Body.Pages.Home.Cell} key={product.id}   to="www.google.nl" img={product.image} info={product.catogory} content={product.description} title={product.title} stock={product.rating.count} price={product.price}/>
+              <Article parentClassName={CSSProps.Body.Pages.Home.Cell} key={product.id} product={product} to="www.google.nl" />
             ))
           }
         </div>
         <div className={CSSProps.Body.Pages.Home.Column}>
           {
             products.filter(product => product.id >= 10 && product.id <= 12).map(product =>  (
-              <Article parentClassName={CSSProps.Body.Pages.Home.Cell} key={product.id}   to="www.google.nl" img={product.image} info={product.catogory} content={product.description} title={product.title} stock={product.rating.count} price={product.price}/>
+              <Article parentClassName={CSSProps.Body.Pages.Home.Cell} key={product.id} product={product} to="www.google.nl" />
             ))
           }
         </div>

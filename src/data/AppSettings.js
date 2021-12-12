@@ -1,7 +1,7 @@
 const AppSettings = {
   /**Classes */
 
-  ApplicationName: "Marvin express",
+  ApplicationName: "E-Shop",
   TranslationFilename:"common",
   NL:"nl",
   EN:"en",

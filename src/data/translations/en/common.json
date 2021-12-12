@@ -12,11 +12,10 @@
     "Theme":"Theme",
     "Light":"Light",
     "Dark":"Dark",
-    "Dashboard":"Dashboard",
-    "Tasks":"Tasks",
-    "Organisation":"Organisation",
+    "Orders":"My orders",
+    "LogOut":"Log out",
     "Settings":"Settings",
-    "Services":"Diensten",
+    "Products":"Products",
     "Error":"Something went wrong",
     "Price":"Price",
     "Sum":"Sum",
@@ -26,5 +25,6 @@
     "StockAlmostEmpty":"In stock, Almost Empty.",
     "InStock":"In stock.",
     "NoStockInfo":"Stock info not available.",
-    "AddToCart":"Add to cart"
+    "AddToCart":"Add to cart",
+    "All":"All"
 }

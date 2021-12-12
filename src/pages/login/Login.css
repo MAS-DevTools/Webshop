@@ -1,5 +1,82 @@
+
+@import "../../Style.css";
 .login-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
 }
+
+.loginUserBody h1, .addUserBody h1{
+    display: grid;
+    justify-content: center;
+}
+
+.loginUserBody {
+  transition: all 400ms ease-out;
+  overflow: hidden;
+  width: 30em;
+  min-width: 30em;
+  
+}
+
+.addUserBody {
+  transition: all 400ms ease-out;
+  overflow: hidden;
+  width: 0;
+  min-width: 0;
+  
+}
+
+.hideLoginUser{
+    width: 0;
+    min-width: 0;
+    max-height: 300px;
+}
+
+.shrinkPage{
+    max-height: 20em;
+}
+
+.showAddUser{
+    width: 30em;
+    min-width: 30em;
+}
+
+.loginlabel{
+    display: grid;
+    justify-content: center;
+}
+
+.loginbuttonArea{
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.loginbutton{
+     display: grid;
+     border: none;
+     min-height: 2em;
+     min-width: 15em;
+     margin-top: 1em;
+     padding: 1px;
+ }
+
+ .el{
+    min-width: 15em;
+    transition: all 400ms ease-out;
+ }
+
+ .el:hover{
+    border-bottom:2px solid yellow;
+
+ }
+
+ .el:focus{
+     border:none;
+    border-bottom:2px solid green;
+
+ }

@@ -19,9 +19,8 @@ const Sidebar = () => {
             <Arrow />
           </a>
         </li>
-        <SideNavItem path={Paths.Dashboard} text={t(DictionaryProps.Dashboard)} onClickPageID={CSSProps.ID.Dashboard} iconID={CSSProps.ID.Dashboard}/>
-        <SideNavItem path={Paths.Tasks} text={t(DictionaryProps.Tasks)} onClickPageID={CSSProps.ID.Tasks} iconID={CSSProps.ID.Tasks}/>
-        <SideNavItem path={Paths.Organisation} text={t(DictionaryProps.Organisation)} onClickPageID={CSSProps.ID.Organisation} iconID={CSSProps.ID.Organisation}/>
+        <SideNavItem path={Paths.Orders} text={t(DictionaryProps.Orders)} onClickPageID={CSSProps.ID.Orders} iconID={CSSProps.ID.Orders}/>
+        <SideNavItem path={Paths.LogOut} text={t(DictionaryProps.LogOut)} onClickPageID={CSSProps.ID.LogOut} iconID={CSSProps.ID.LogOut}/>
         <SideNavItem path={Paths.Settings} text={t(DictionaryProps.Settings)} onClickPageID={CSSProps.ID.Settings} iconID={CSSProps.ID.Settings}/>
       </ul>
     </nav>

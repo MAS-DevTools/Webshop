@@ -1,24 +1,51 @@
-import "./ArticlePivotgit.css";
-import React, { useEffect, useState } from "react";
+import "./ArticlePivot.css";
+import React, { useRef } from "react";
 import DictionaryProps from "../../data/constants/DictionaryProps";
 import { useTranslation } from "react-i18next";
 import CSSProps from "../../data/constants/CSSProps";
-import AppSettings from "../../data/AppSettings";
-import CatogoryNavItem from "./controls/CatogoryNavItem";
+import Counter from "../../components/counter/Counter.js";
 import Paths from "../../data/constants/Paths";
-import ApiEndpoints from "../../data/constants/ApiEndpoints.js";
-import LogMessage from "../../data/constants/LogMessageProps.js";
-import BarLoader from "react-spinners/BarLoader";
-import { css } from "@emotion/react";
+import { Base } from "../../components/Base";
+import AppSettings from "../../data/AppSettings";
 
-const ArticlePivot = () => {
+const ArticlePivot = (props) => {
   const [t] = useTranslation(AppSettings.TranslationFilename);
-  const { id, title, body } = props.data;
+  const data = props.datasource;
+  let count = useRef(0)
+
+  function updateAmount(countChild) {
+    console.log(countChild);
+    count.current = countChild;
+    console.log(count.current);
+  }
+
   return (
-    <div className="post">
-      <small>11{id}</small>
-      <h1>title{title}</h1>
-      <p>bodys{body}</p>
+    <div className="art">
+      <figure className="articlepivot-figure">
+        <img className="articlepivot-image" src={data.image} alt={Paths.None} />
+      </figure>
+
+      <div className="articleBody">
+        <div className="articleBodyHeader paddingLR tRow tHeader">
+          <small>Artilnummer{data.id}</small>
+          <h3>{data.title}</h3>
+        </div>
+        <div className="articleBodyContent paddingLR tRow tBody">
+          <p>{data.description}</p>
+        </div>
+        <div className="articleBodyFooter tRow tFooter">
+          <div className="tRow tHeader">
+            <Counter count={count.current} updateAmount={updateAmount} price={data.price} limit={999} />
+          </div>
+          <div className="paddingLR tRow tBody">
+          <button className={CSSProps.Body.BtnAddToCart + " " + CSSProps.Body.FloatR + " "+ Base.prototype.CanOrder(data.stock)}  onClick={() =>{ if( count.current){data["quantity"]=count.current ; Base.prototype.addToCart(data); updateAmount(0); window.location.reload(false); }}}>{t(DictionaryProps.AddToCart)}</button>
+             
+          </div>
+          <div className="paddingLR tRow tFooter">
+          <div className={CSSProps.Body.FloatR} style={{color: Base.prototype.GetStockInfoColor(data.stock)}}>{data.stock} {t(Base.prototype.GetStockInfo(data.stock))}</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

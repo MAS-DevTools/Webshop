@@ -2,15 +2,14 @@ const Paths = {
   /**Classes */
   None: "#",
   Home:"/",
-  About:"/about",
+  Cart:"/cart",
   Servivedesk:"/servicedesk",
-  Dashboard:"/dashboard",
   Settings:"/settings",
-  Organisation:"/organisation",
+  LogOut:"/logout",
   Login:"/login",
   Profile:"/profile",
-  Tasks:"/tasks",
-  Services:"/services"
+  Orders:"/orders",
+  Products:"/products"
 };
 
 export default Paths;

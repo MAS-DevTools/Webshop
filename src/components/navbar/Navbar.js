@@ -11,6 +11,7 @@ import Paths from "../../data/constants/Paths";
 
 const Navbar = () => {
   const [t] = useTranslation(AppSettings.TranslationFilename);
+  let count = Base.prototype.getCartCount();
   
   return (
 
@@ -20,9 +21,9 @@ const Navbar = () => {
        
         <NavItem path={Paths.Servivedesk} text={t(DictionaryProps.Servicedesk)} onClickPageID={CSSProps.ID.Servivedesk} iconID={CSSProps.ID.Servivedesk}/>
         
-        <NavItem path={Paths.About} text={t(DictionaryProps.About)} onClickPageID={CSSProps.ID.About} iconID={CSSProps.ID.About}/>
+        <NavItem path={Paths.Cart} text={t(DictionaryProps.About)} onClickPageID={CSSProps.ID.Cart} iconID={CSSProps.ID.Cart} count={count}/>
         
-        <NavItem path={Paths.Services} text={t(DictionaryProps.Services)} onClickPageID={CSSProps.ID.Services} iconID={CSSProps.ID.Services}/>
+        <NavItem path={Paths.Products} text={t(DictionaryProps.Products)} onClickPageID={CSSProps.ID.Products} iconID={CSSProps.ID.Products} />
         <LoginControl onClick={()=>Base.prototype.SwitchPage(CSSProps.ID.Login)}/>
       </ul>
     </nav>

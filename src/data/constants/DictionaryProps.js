@@ -13,11 +13,10 @@ const DictionaryProps = {
   Theme: "Theme",
   Light: "Light",
   Dark: "Dark",
-  Dashboard:"Dashboard",
-  Tasks:"Tasks",
-  Organisation:"Organisation",
+  Orders:"Orders",
+  LogOut:"LogOut",
   Settings:"Settings",
-  Services:"Services",
+  Products:"Products",
   Error:"Error",
   Price:"Price",
   Sum:"Sum",
@@ -27,7 +26,8 @@ const DictionaryProps = {
   StockAlmostEmpty:"AlmostEmptyStock",
   InStock:"InStock",
   NoStockInfo:"NoStockInfo",
-  AddToCart:"AddToCart"
+  AddToCart:"AddToCart",
+  All:"All"
 };
 
 export default DictionaryProps;

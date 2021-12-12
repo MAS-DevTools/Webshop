@@ -129,6 +129,7 @@
   vertical-align: middle;
   margin-right: 10px;
 }
+
 .usercontrollink-text {
   height: auto;
   width: auto;
@@ -173,4 +174,8 @@
   .has-dropdown:focus-within .dropdown {
     min-width: 350px;
   }
+}
+
+.dropdown-text {
+  color: var(--text);
 }

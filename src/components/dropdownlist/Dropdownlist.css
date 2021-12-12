@@ -1,0 +1,9 @@
+@import "../../Style.css";
+
+.dropdownlist{
+    width: 100%;
+    min-width: 3em;
+    color:white;
+    background: black;
+    border-color: blueviolet;
+}

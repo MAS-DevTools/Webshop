@@ -1,5 +1,5 @@
 import "./Header.css";
-import { ReactComponent as Logo } from "../../icons/Marvin express.svg";
+import { ReactComponent as Logo } from "../../icons/E-Shop.svg";
 import AppSettings from "../../data/AppSettings";
 import CSSProps from "../../data/constants/CSSProps";
 

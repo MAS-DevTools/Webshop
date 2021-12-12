@@ -1,6 +1,6 @@
 @import "../../Style.css";
 
-.catogorynavbar {
+.categorynavbar {
   height: 5em;
   width: 100%;
   background-color: var(--gray6);
@@ -9,7 +9,7 @@
   z-index: 9;
 }
 
-.catogorynavbar-nav {
+.categorynavbar-nav {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -21,7 +21,7 @@
   justify-content: space-evenly;
 }
 
-.catogorynavbar-item {
+.categorynavbar-item {
   height: 100%;
   width: 100%;
   justify-content: center;
@@ -29,12 +29,12 @@
   cursor: pointer;
 }
 
-.catogorynavbar-item:hover,
-.catogorynavbar-item:active {
+.categorynavbar-item:hover,
+.categorynavbar-item:active {
   box-shadow: 1px 1px 4px 2px var(--shadow);
 }
 
-.catogorynav-link {
+.categorynav-link {
   height: 100%;
   width: 100%;
   justify-content: center;
@@ -46,32 +46,32 @@
   transition: var(--transition-speed);
 }
 
-.catogorynav-link:hover {
+.categorynav-link:hover {
   transform: scale(1.08);
   text-shadow: 0.1px 0.1px;
 }
 
-.catogorynavbar-item .nav-link:active {
+.categorynavbar-item .nav-link:active {
   transform: scale(1);
   text-shadow: 0px 0px;
 }
 
-.catogorynavbar-item .nav-link:active {
+.categorynavbar-item .nav-link:active {
   transform: scale(1);
   text-shadow: 0px 0px;
 }
 
-.catogorynavlink-text {
+.categorynavlink-text {
   margin: 1rem;
 }
 
-.catogorynavlink-text {
+.categorynavlink-text {
   height: auto;
   width: auto;
 }
 /*Icons*/
 
-.catogorynav-link svg {
+.categorynav-link svg {
   width: 2rem;
   margin-left: 20px;
 }
@@ -80,7 +80,7 @@
 /* Small screens */
 
 @media only screen and (max-width: 600px) {
-  .catogorynavlink-text {
+  .categorynavlink-text {
     opacity: 0;
     height: 0;
     width: 0;
@@ -92,7 +92,7 @@
 /* Large screens */
 
 @media only screen and (min-width: 600px) {
-  .catogorynavlink-text {
+  .categorynavlink-text {
     height: auto;
     width: auto;
     visibility: visible;
@@ -100,7 +100,7 @@
     transition: visibility 0s, opacity 1.5s linear;
   }
 
-  .catogorynavbar-nav-nametag {
+  .categorynavbar-nav-nametag {
     margin-left: auto;
     display: block;
     min-width: 20em;

@@ -1,0 +1,145 @@
+@import "../../Style.css";
+
+.customTable {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 100%;
+  min-height: 30em;
+}
+
+.customTableContent {
+  display: flex;
+  padding: 0;
+  height: 100%;
+  clear: both;
+}
+
+.customTableFooter {
+  border: solid var(--gray6);
+}
+
+.tableArea {
+  flex: 3;
+  padding-left: 1em;
+  padding-right: 1em;
+  transition: var(--transition-speed);
+}
+
+.filter {
+  position: absolute;
+  overflow: hidden;
+  margin: 0;
+  width: 0;
+  display: flex;
+  flex-flow: column;
+  background: var(--uiTextColor);
+  color: var(--uiColor);
+  transition: all 400ms ease-out;
+  z-index: 8;
+}
+
+@media only screen and (max-width: 1600px) {
+}
+/* Screen adjustmets*/
+/* Small screens */
+
+@media only screen and (max-width: 600px) {
+  .filter {
+    max-height: 100%;
+    height: calc(100% - 26.8em);
+  }
+}
+@media only screen and (max-width: 1600px) {
+  .paginationTableHeader {
+    height: 6em;
+  }
+
+  .filter-active {
+    width: 15em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  
+}
+/* Large screens */
+
+@media only screen and (min-width: 600px) and (max-width: 1600px) {
+  .filter {
+    height: calc(100% - 28.2em);
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .filter {
+    width: 15em;
+    max-width: 15em;
+    transition: var(--transition-speed);
+    height: calc(100% - 22.2em);
+  }
+
+  .paginationTableHeader {
+    width: 0;
+    height: 0;
+    display: none;
+    visibility: hidden;
+  }
+
+  .filter-active {
+    width: 15em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .tableArea {
+    transition: var(--transition-speed);
+    padding-left: 16em;
+  }
+}
+
+.showFilterBtn {
+  background-color: var(--gray6);
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 17px;
+  padding: 16px 76px;
+  text-decoration: none;
+  width: 100%;
+  margin-top: 1.5em;
+  text-align: center;
+}
+.showFilterBtn:hover {
+  background-color: var(--gray5);
+}
+.showFilterBtn:active {
+  position: relative;
+  top: 1px;
+}
+
+/* Pagination */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.prev,
+.next {
+  background: var(--text-secondary);
+  border: none;
+  padding: 10px;
+  color: var(--text);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.prev.disabled,
+.next.disabled {
+  pointer-events: none;
+  box-shadow: none;
+  color: #999;
+}
