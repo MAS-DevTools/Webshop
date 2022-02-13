@@ -10,8 +10,9 @@ Install application
 2.	Check node version with the command => [node -v]
 3.	Install or update node if necessary.
 4.	Install Visual studio code
-5.	Get project from Github repository (https://github.com/MAS-DevTools/Webshop)
-6.	Install node-mudles
+5.	Get project from Github repository (https://github.com/MAS-DevTools/Webshop) OR open "Webshop"
+	project
+6.	Install node-mudles for the "webshop" project (Just run npm install without arguments. It will resolve the required dependencies from the package.json file.)
 
 Node-mudles
 install --save i18next react-i18next
@@ -21,7 +22,9 @@ install classnames
 install jwt-decode
 install react-table
 
-7.	Run command : npm start
+7.	Open "Fake store API" project
+8.	Install node-mudles for the "Fake store API" project (Just run npm install without arguments. It will resolve the required dependencies from the package.json file.)
+9.	Run command for both projects ( first the "Fake store API" project) COMMAND=> : npm start 
 
 
 
