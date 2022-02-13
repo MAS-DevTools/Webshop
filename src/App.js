@@ -18,6 +18,8 @@ import Footer from "./components/footer/Footer";
 import { Base } from "./components/Base";
 import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
+import { RegisterModel } from "./data/models/RegisterModel";
+
 const App = () => {
   
   let sidebar;
@@ -36,6 +38,14 @@ const App = () => {
   if (token) {
     sidebar = <Sidebar />;
     hostCSS = " loginBarVisible ";
+  }
+
+  function onSucces(){
+    alert("Login succes!");
+  }
+
+  function onFail(){
+    alert("Login failed!");
   }
 
   return (
@@ -67,7 +77,7 @@ const App = () => {
                   <Profile />
                 </Route>
                 <Route exact path={Paths.Login}>
-                  <Login  />
+                  <Login RegisterModel={RegisterModel} IsOrder={false} OnSuccesCallback={onSucces} OnFailCallback={onFail}/>
                 </Route>
                 <Route exact path={Paths.Settings}>
                   <Settings />

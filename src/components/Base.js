@@ -24,7 +24,7 @@ export class Base {
       button.style.cssText = CSSProps.Style.NavDeselected;
     }
 
-    if (selectedPage === id) {
+    if (selectedPage === id && button) {
       button.style.cssText = CSSProps.Style.NavSelected;
 
       let cachedVolumeValue = localStorage.getItem(LocalStorageProps.Volume);
@@ -98,18 +98,17 @@ export class Base {
   getToken() {
     const tokenString = sessionStorage.getItem("token");
     const userToken = JSON.parse(tokenString);
-    console.log("userToken");
-    console.log(userToken);
+
     return new Promise((resolve) => {
       if (userToken) {
         this.validateToken(userToken).then((result) => {
-          console.log("isValid");
-          console.log(result);
+
           if (result) {
             resolve(userToken);
             return;
           }
           this.setToken(null);
+          window.location.reload();
         });
         return;
       }
@@ -119,7 +118,7 @@ export class Base {
 
   addToCart(product) {
     try {
-      console.log("count is :" + product["quantity"]);
+      
       if (!product) {
         return;
       }
@@ -132,18 +131,16 @@ export class Base {
       let cachedCart = JSON.parse(cachedCartString);
 
       if (!cachedCart || cachedCart.length === 0) {
-        console.log("adding items");
+        
         var newCart = [];
         newCart.push(product);
-        console.log(newCart);
+        
         localStorage.setItem("cart", JSON.stringify(newCart));
         return;
       }
-      console.log("Getting index");
+      
       const objIndex = cachedCart.findIndex((obj) => obj.id === product.id);
-      //Log object to Console.
-      console.log("Before update: ", objIndex);
-
+      
       if (
         objIndex === -1 ||
         objIndex === undefined ||
@@ -155,18 +152,13 @@ export class Base {
         localStorage.setItem("cart", JSON.stringify(cachedCart));
         return;
       }
-      console.log("look test");
-      console.log(
-        "testing before something2 :" + cachedCart[objIndex]["quantity"]
-      );
+     
       cachedCart[objIndex]["quantity"] += product["quantity"];
-      console.log(
-        "testing after something2 :" + cachedCart[objIndex]["quantity"]
-      );
+     
       localStorage.setItem("cart", JSON.stringify(cachedCart));
     } catch (err) {
       //localStorage.setItem("cart", JSON.stringify([product]));
-      console.log(err);
+
     }
   }
 
@@ -195,8 +187,7 @@ export class Base {
       })
         .then((res) => res.json())
         .then((json) => {
-          console.log("json");
-          console.log(json);
+         
           isValid = json;
         })
         .finally(() => {

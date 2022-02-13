@@ -21,7 +21,7 @@ const Navbar = () => {
        
         <NavItem path={Paths.Servivedesk} text={t(DictionaryProps.Servicedesk)} onClickPageID={CSSProps.ID.Servivedesk} iconID={CSSProps.ID.Servivedesk}/>
         
-        <NavItem path={Paths.Cart} text={t(DictionaryProps.About)} onClickPageID={CSSProps.ID.Cart} iconID={CSSProps.ID.Cart} count={count}/>
+        <NavItem path={Paths.Cart} text={t(DictionaryProps.MyCart)} onClickPageID={CSSProps.ID.Cart} iconID={CSSProps.ID.Cart} count={count}/>
         
         <NavItem path={Paths.Products} text={t(DictionaryProps.Products)} onClickPageID={CSSProps.ID.Products} iconID={CSSProps.ID.Products} />
         <LoginControl onClick={()=>Base.prototype.SwitchPage(CSSProps.ID.Login)}/>

@@ -10,7 +10,8 @@ const Constants ={
         Number:"number",
         Addition:"addition",
         Zipcode:"zipcode",
-        Phone:"phone"
+        Phone:"phone",
+        Birthday:"birthday"
     },
     Types:{
         String:"string",

@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 h1 {
@@ -25,7 +24,6 @@ h1 {
 .spinner {
   margin: auto;
   width: inherit;
-  
 }
 
 .BarLoader {
@@ -98,7 +96,6 @@ a {
   --scrollbar-color: var(--text-secondary);
   --uiColor: var(--gray5);
   --uiTextColor: var(--gray1);
-
 }
 
 .dark {
@@ -152,7 +149,6 @@ a {
   height: 100%;
   position: relative;
   background-color: var(--bg);
-  
 }
 
 .hostbody {
@@ -165,11 +161,10 @@ a {
 /* Large Screen */
 @media only screen and (min-width: 600px) {
   .host {
-    
     padding: 1rem 1rem 1rem 1rem;
   }
 
-  .loginBarVisible{
+  .loginBarVisible {
     margin-left: 5em;
   }
 
@@ -177,7 +172,6 @@ a {
     box-shadow: 1px 1px 20px 0px var(--shadow);
     min-width: 40em;
   }
-
 }
 /* Small Screen */
 @media only screen and (max-width: 600px) {
@@ -190,23 +184,26 @@ a {
 /* Table configurations*/
 .tRow.tHeader {
   flex: 0 1 auto;
+  padding-left: 1rem;
 }
 .tRow.tBody {
   flex: 1 1 auto;
+  
 }
 .tRow.tFooter {
   flex: 0 1 40px;
+  padding-left: 1rem;
 }
 
-.floatL{
-  float:left;
+.floatL {
+  float: left;
 }
 
-.floatR{
-  float:right;
+.floatR {
+  float: right;
 }
 
-.btnAddToCart{
+.btnAddToCart {
   background-color: var(--gray6);
   color: white;
   border: none;
@@ -221,17 +218,17 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
-  .shrink{
+  .shrink {
     transform: scale(0.6);
   }
 }
 
-.clearBtnBackground{
+.clearBtnBackground {
   background: none;
-  border:none;
+  border: none;
 }
 
-.rotate180{
+.rotate180 {
   transform: rotate(180deg);
 }
 
@@ -247,17 +244,17 @@ a {
   transform: translateY(0.3em);
 }
 
-.tableitems{
+.tableitems {
   display: inline-block;
   /*background: var(--uiColor);*/
   border-radius: 36%;
   padding: 0.25em;
   min-width: 100px;
-  
+
   /*color: var(--uiTextColor);*/
 }
 
-input{
+input {
   border: none;
   border-bottom: 2px solid var(--primary);
 }
@@ -267,14 +264,19 @@ table {
   width: 100%;
 }
 
-table td, #customers th {
+table td,
+#customers th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-table tr:nth-child(even){background-color: #f2f2f2;}
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-table tr:hover {background-color: #ddd;}
+table tr:hover {
+  background-color: #ddd;
+}
 
 table th {
   padding-top: 12px;
@@ -284,6 +286,6 @@ table th {
   color: white;
 }
 
-.errormessage{
-color:red;
+.errormessage {
+  color: red;
 }

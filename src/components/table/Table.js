@@ -2,8 +2,7 @@ import React,{useState} from "react";
 import { useTable, useFilters, useSortBy } from "react-table";
 
 export default function Table({ columns, data }) {
-    console.log("Data in child!");
-    console.log(data);
+
   // Use the useTable Hook to send the columns and data to build the table
   const [filterInput, setFilterInput] = useState("");
   const {

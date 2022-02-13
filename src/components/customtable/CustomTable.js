@@ -55,10 +55,7 @@ const CustomTable = ({ category }) => {
   }
 
   function getProducts(){
-    console.log("getting data: min" + minCostFilter.current +" max "+ maxCostFilter.current);
-    console.log(products);
     var test = products.filter(p => p.price >= minCostFilter.current && p.price <= maxCostFilter.current);
-    console.log(test);
     return test;
   }
   
@@ -90,32 +87,24 @@ const CustomTable = ({ category }) => {
   }, [selectedCategory]);
 
 useEffect(()=>{
-  console.log("min >" + minCost + " max > " + maxCost);
+  
   if(minCost === 0 && maxCost === 0 && products.length >0)
   {
-    console.log(products);
+    
     let arr = Array.from(products.map(x => x.price));
-    console.log(arr);
+
     setMinCost(Math.min(...arr));
     setMaxCost(Math.max(...arr));
     minCostFilter.current = minCost;
     maxCostFilter.current = maxCost;
-    console.log("arr");
-    console.log(arr);
-    console.log("minCost");
-    console.log(minCost);
-    console.log("maxCost");
-    console.log(maxCost);
+
     return products.filter(p => p.price >= minCost && p.price <= maxCost);
   }else if(products.length >0){
-    console.log(products);
+    
     let arr = Array.from(products.map(x => x.price));
     setMinCost(Math.min(...arr));
     setMaxCost(Math.max(...arr));
-    console.log("minCost");
-    console.log(minCostFilter.current);
-    console.log("maxCost");
-    console.log(maxCostFilter.current);
+
     return products.filter(p => p.price >= minCostFilter.current && p.price <= maxCostFilter.current);
   }
 
@@ -156,13 +145,13 @@ useEffect(()=>{
             className="showFilterBtn clearBtnBackground"
             onClick={TogleFilter}
           >
-            Toon zoekopties
+            {t(DictionaryProps.ShowSearchOptions)}
           </button>
         </div>
         <div className="tRow customTableContent tBody">
           <div id="filterID" className="filter ">
             <div className="tRow tHeader">
-              <h2>Filter opties</h2>
+              <h2>{t(DictionaryProps.FilterOptions)}</h2>
             </div>
             <div className="tRow tBody">
               
@@ -173,9 +162,8 @@ useEffect(()=>{
                   {
                     minCostFilter.current = min;
                     maxCostFilter.current = max;
-                    console.log(`onMouseUp min = ${min}, max = ${max}`);
+                    
                     setMinCost(min);
-                    console.log(`after onMouseUp min = ${min}, max = ${max}`);
                     setMaxCost(max);
                   }
                 }
@@ -188,7 +176,7 @@ useEffect(()=>{
               />
             </div>
             <div className="tRow tFooter">
-              <p>footer (fixed height)</p>a
+              
             </div>
           </div>
           <div className="tableArea">
@@ -202,7 +190,7 @@ useEffect(()=>{
           </div>
         </div>
         <div className="tRow paginationTableFooter tFooter paddingLR">
-          <p>footer (fixed height)</p>
+          
         </div>
       </div>
     </div>

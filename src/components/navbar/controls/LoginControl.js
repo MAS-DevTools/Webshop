@@ -24,8 +24,7 @@ const LoginControl = () => {
   }, [token, setToken]);
 
   if (token) {
-    console.log("logintoken");
-    console.log(token);
+
     text = t(DictionaryProps.Greetings.Welcome, { name: token.email });
   } else {
     text = "Login";

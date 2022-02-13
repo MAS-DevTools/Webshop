@@ -1,0 +1,29 @@
+@import "../../Style.css";
+
+.fieldtext , textarea {
+  width: 100%;
+  padding: 12px;
+  
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.fieldsubmit {
+  
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.h200{
+  min-height: 300px;
+}
+  .containerServiceDesk {
+    border-radius: 5px;
+    padding: 20px;
+  }
+

@@ -1,162 +1,49 @@
 import CSSProps from "../../data/constants/CSSProps";
 import "./Footer.css";
+import { useTranslation } from "react-i18next";
+import AppSettings from "../../data/AppSettings";
+import DictionaryProps from "../../data/constants/DictionaryProps";
+
 const Footer = () => {
+  const [t] = useTranslation(AppSettings.TranslationFilename);
   return (
     <footer className={CSSProps.Footer.Area}>
       <div className="footer-gray">
         <div className="footer-custom">
           <div className="footer-lists">
             <div className="footer-list-wrap">
-              <h6 className="ftr-hdr">Order Toll Free</h6>
+              <h6 className="ftr-hdr">Contact</h6>
               <ul className="ftr-links-sub">
-                <li>800-952-5592</li>
+                <li>070-12345678</li>
               </ul>
-              <h6 className="ftr-hdr">International</h6>
-              <ul className="ftr-links-sub">
-                <li>
-                  <a href="http://www.art.fr" rel="nofollow">
-                    France
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.art.co.uk" rel="nofollow">
-                    United Kingdom
-                  </a>
-                </li>
-              </ul>
+              
             </div>
 
             <div className="footer-list-wrap">
-              <h6 className="ftr-hdr">Customer Service</h6>
+              <h6 className="ftr-hdr">{t(DictionaryProps.Servicedesk)}</h6>
               <ul className="ftr-links-sub">
                 <li>
-                  <a href="/help/talktous.html" rel="nofollow">
-                    Contact Us
-                  </a>
-                </li>
-                <li>
-                  <a href="/help/placingorders.html" rel="nofollow">
-                    Ordering
-                  </a>
-                </li>
-                <li>
-                  <a href="/help/shipping.html" rel="nofollow">
-                    Shipping &amp; Delivery
-                  </a>
-                </li>
-                <li>
-                  <a href="/help/shippingreturns.html" rel="nofollow">
-                    Returns
-                  </a>
-                </li>
-                <li>
-                  <a href="/help/international-shipping.html" rel="nofollow">
-                    International Orders
-                  </a>
-                </li>
-                <li>
-                  <a href="/~/egift-cards/" rel="nofollow">
-                    Gift Cards
-                  </a>
-                </li>
-                <li>
-                  <a href="/help/faq.html" rel="nofollow">
-                    FAQs
+                  <a href="/servicedesk" rel="nofollow">
+                  {t(DictionaryProps.ContactUs)}
                   </a>
                 </li>
               </ul>
             </div>
-            <div className="footer-list-wrap">
-              <h6 className="ftr-hdr">About Art.com</h6>
-              <ul className="ftr-links-sub">
-                <li>
-                  <a
-                    href="/asp/aboutus/default-asp/_/posters.htm"
-                    rel="nofollow"
-                  >
-                    Our Company
-                  </a>
-                </li>
-                <li>
-                  <a href="http://corporate.art.com/careers" rel="nofollow">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="/asp/landing/artistrising" rel="nofollow">
-                    Artist Rising
-                  </a>
-                </li>
-                <li>
-                  <a href="/~/art-for-business" rel="nofollow">
-                    Business &amp; Trade Sales
-                  </a>
-                </li>
-                <li>
-                  <a href="http://affiliates.art.com/index.aspx" rel="nofollow">
-                    Affiliate Program
-                  </a>
-                </li>
-                <li>
-                  <a href="/catalog" rel="nofollow">
-                    <strong>Shop Our Catalog</strong>
-                  </a>
-                </li>
-                <li>
-                  <a href="http://blog.art.com" rel="nofollow">
-                    ART.COM BLOG
-                  </a>
-                </li>
-              </ul>
-            </div>
+            
 
-            <div className="footer-list-wrap">
-              <h6 className="ftr-hdr">My Account</h6>
-             
-              <ul className="ftr-links-sub">
-                <div className="!loggedin">
-                  <li className="ftr-Login">
-                    <span className="link login-trigger">Access My Account</span>
-                  </li>
-                  <li>
-                    <span
-                      className="link"
-                      //onClick="link('/asp/secure/your_account/track_orders-asp/_/posters.htm')"
-                    >
-                      Track My Order
-                    </span>
-                  </li>
-                </div>
-                <div rule="loggedin">
-                  <li className="ftr-Login">
-                    <span className="link ftr-access-my-account">
-                      Access My Account
-                    </span>
-                  </li>
-                  <li>
-                    <span
-                      className="link"
-                     //onClick="window.location.href = getProfileKey() + '?pagetype=oh';"
-                    >
-                      Track My Order
-                    </span>
-                  </li>
-                </div>
-              </ul>
-            </div>
           </div>
 
           <div className="footer-email">
             <h6 className="ftr-hdr">
-              Sign up for exclusive offers and inspiration
+              {t(DictionaryProps.SignUpOffer)}
             </h6>
             <div id="ftr-email" className="ftr-email-form">
               <form
                 id="ftrEmailForm"
                 method="post"
-                action="http://em.art.com/pub/rf"
+                
               >
-                <div className="error">Please enter a valid email address</div>
+                <div className="error">{t(DictionaryProps.Email)}</div>
                 <input
                   type="text"
                   name="email_address_"
@@ -193,11 +80,11 @@ const Footer = () => {
           </div>
 
           <div className="footer-social">
-            <h6 className="ftr-hdr">Follow Us</h6>
+            <h6 className="ftr-hdr">{t(DictionaryProps.FollowUs)}</h6>
             <ul>
               <li>
                 <a
-                  href="https://www.facebook.com/art.com"
+                  href="https://www.facebook.com/"
                   title="Facebook"
                   //onClick="_gaq.push(['_trackSocial', 'Facebook', 'Follow', 'Footer', 'undefined', 'True']);"
                 >
@@ -211,7 +98,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://plus.google.com/108089796661280870153"
+                  href="https://www.google.com/"
                   title="Google+"
                   //onClick="_gaq.push(['_trackSocial', 'GooglePlus', 'Follow', 'Footer', 'undefined', 'True']);"
                 >
@@ -224,7 +111,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://pinterest.com/artdotcom/">
+                <a href="https://pinterest.com/">
                   <img
                     width="24"
                     height="24"
@@ -234,7 +121,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a  href="http://instagram.com/artdotcom/">
+                <a  href="http://instagram.com/">
                   <img
                     width="24"
                     height="24"
@@ -245,7 +132,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://www.twitter.com/artdotcom"
+                  href="https://www.twitter.com/"
                   title="Twitter"
                   //onClick="_gaq.push(['_trackSocial', 'Twitter', 'Follow', 'Footer', 'undefined', 'True']);"
                 >
@@ -261,27 +148,20 @@ const Footer = () => {
 
           <div className="footer-legal">
             <p>
-              &copy; Art.com Inc. All Rights Reserved. |{" "}
-              <a href="/help/privacy-policy.html" rel="nofollow">
+              &copy; E-shop.com Inc. All Rights Reserved. |{" "}
+              <a href="/servicedesk" rel="nofollow">
                 Privacy Policy
               </a>{" "}
               |{" "}
-              <a href="/help/terms-of-use.html" rel="nofollow">
-                Terms of Use
-              </a>{" "}
-              |{" "}
-              <a href="/help/terms-of-sale.html" rel="nofollow">
+             
+              <a href="/servicedesk" rel="nofollow">
                 Terms of Sale
               </a>
             </p>
             <p>
-              Art.com, You+Art, and Photos [to] Art are trademarks or registered
-              trademarks of Art.com Inc.
+              Trademark E-shop.com Inc.
             </p>
-            <p>
-              Various aspects of this website are covered by issued US patent
-              No. 7,973,796 and other pending patent applications.
-            </p>
+            
           </div>
 
           <div className="footer-payment">

@@ -7,7 +7,6 @@ import CategoryNavbar from "../../components/categorynavbar/CategoryNavbar";
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import DotLoader from "react-spinners/DotLoader";
-import LogMessage from "../../data/constants/LogMessageProps.js";
 import ApiEndpoints from "../../data/constants/ApiEndpoints.js";
 import DictionaryProps from "../../data/constants/DictionaryProps.js";
 import AppSettings from "../../data/AppSettings";
@@ -41,7 +40,6 @@ const Home = () => {
           setProducts(data);
         })
       .catch(exception =>{
-        console.log(LogMessage.FetchFailed);
         setError(exception);
       })
       .finally(()=>{

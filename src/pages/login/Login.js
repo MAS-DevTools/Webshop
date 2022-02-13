@@ -2,56 +2,58 @@ import "./Login.css";
 import React, { useEffect, useState } from "react";
 import { Base } from "../../components/Base";
 import CSSProps from "../../data/constants/CSSProps";
-import { useHistory } from "react-router";
 import { Validator } from "../../tools/Validator";
-import { RegisterModel } from "../../data/models/RegisterModel";
 import { User } from "../../data/models/User";
 import ApiEndpoints from "../../data/constants/ApiEndpoints";
 import Constants from "../../data/constants/Constants";
-import Path from "../../data/constants/Paths";
+import AppSettings from "../../data/AppSettings";
+import { useTranslation } from "react-i18next";
+import DictionaryProps from "../../data/constants/DictionaryProps.js";
+import { useHistory } from "react-router-dom";
 
-async function loginUser(email, password) {
-  fetch(ApiEndpoints.Login, {
-    method: "POST",
+async function handleRequest(
+  endpoint,
+  token,
+  body,
+  succesCallback,
+  failCallback
+) {
+  var email = token ? token?.email : "";
+  var tokenvalue = token ? token?.token : "";
+
+  fetch(endpoint.path, {
+    method: endpoint.method,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-    },
-    body: new URLSearchParams({
       email: email,
-      password: password,
-    }),
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      console.log(json.result);
-      Base.prototype.setToken(json.result);
-      return json.token;
-    })
-    .then(() => {
-      window.location.reload();
-    });
-}
-
-async function registerUser(user) {
-  fetch(ApiEndpoints.Register, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      token: tokenvalue,
     },
-    body: new URLSearchParams({ raw: JSON.stringify(user) }),
+    body: body,
   }).then((res) => {
     if (res.ok) {
-      loginUser(user.email, user.password);
+      res.json().then((json) => {
+        succesCallback(json);
+      });
+      return;
     }
-    return null;
+
+    res.json().then((json) => {
+      failCallback(json);
+    });
   });
 }
 
-export default function Login() {
+const Login = ({
+  RegisterModel,
+  IsOrder,
+  OnSuccesCallback,
+  OnFailCallback,
+}) => {
   useEffect(() => {
     Base.prototype.SwitchPage(CSSProps.ID.Login);
   });
 
+  const [t] = useTranslation(AppSettings.TranslationFilename);
   const [errors, setErrors] = useState([]);
   const [username, setUserName] = useState();
   const [showAddUser, setShowAddUser] = useState(CSSProps.Empty);
@@ -60,12 +62,7 @@ export default function Login() {
   const [password, setPassword] = useState();
   const history = useHistory();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    await loginUser(username, password);
-  };
-
-  function handleRegister(event) {
+  function handleNewUser(event) {
     let arr = [];
     RegisterModel.forEach((x) => {
       if (Validator.prototype.isEmpty(document.getElementById(x.id).value)) {
@@ -77,17 +74,19 @@ export default function Login() {
             key: x.id,
             value: (
               <p key={x.id} className={CSSProps.Login.Errormessage}>
-                Invalid input
+                {t(DictionaryProps.InvalidInput)}
               </p>
             ),
           });
       }
     });
+
     if (
+      !IsOrder &&
       document.getElementById(Constants.RegiterModel.Password).value !==
-      document.getElementById(Constants.RegiterModel.ConfirmPassword).value
+        document.getElementById(Constants.RegiterModel.ConfirmPassword).value
     ) {
-      alert("Invalid password");
+      alert(t(DictionaryProps.InvalidPassword));
       event.preventDefault();
       return;
     }
@@ -95,48 +94,62 @@ export default function Login() {
     setErrors(arr.filter((error) => error !== null));
 
     if (errors.length !== 0) {
-      alert("Errors found.");
+      alert(t(DictionaryProps.ErrorsFound));
       event.preventDefault();
       return;
     }
 
-    User.email = document.getElementById(Constants.RegiterModel.Email).value;
-    User.username = document.getElementById(Constants.RegiterModel.Email).value;
+    User.email = document.getElementById(Constants.RegiterModel.Email)?.value;
+    User.username = document.getElementById(
+      Constants.RegiterModel.Email
+    )?.value;
     User.password = document.getElementById(
       Constants.RegiterModel.Password
-    ).value;
+    )?.value;
     User.name.firstname = document.getElementById(
       Constants.RegiterModel.Firstname
-    ).value;
+    )?.value;
     User.name.lastname = document.getElementById(
       Constants.RegiterModel.Lastname
-    ).value;
+    )?.value;
     User.address.city = document.getElementById(
       Constants.RegiterModel.City
-    ).value;
+    )?.value;
     User.address.street = document.getElementById(
       Constants.RegiterModel.Street
-    ).value;
+    )?.value;
     User.address.number = document.getElementById(
       Constants.RegiterModel.Number
-    ).value;
+    )?.value;
     User.address.addition = document.getElementById(
       Constants.RegiterModel.Addition
-    ).value;
+    )?.value;
     User.address.zipcode = document.getElementById(
       Constants.RegiterModel.Zipcode
-    ).value;
-    User.phone = document.getElementById(Constants.RegiterModel.Phone).value;
-    registerUser(User);
-    alert("Succes!");
-    event.preventDefault();
-    return;
+    )?.value;
+    User.birthday = document.getElementById(
+      Constants.RegiterModel.Birthday
+    )?.value;
+    User.phone = document.getElementById(Constants.RegiterModel.Phone)?.value;
+
+    if (IsOrder) {
+      order(User);
+    } else {
+      handleRequest(
+        { path: ApiEndpoints.Register, method: ApiEndpoints.Methods.POST },
+        token,
+        new URLSearchParams({ raw: JSON.stringify(User) }),
+        () => login(User.email, User.password),
+        (result) => onFail(result)
+      );
+    }
   }
 
   const validateInput = async (value, prop) => {
     if (prop.required === false) {
       return;
     }
+
     //Clean up old errors
     errors.forEach((element) => {
       if (prop.id === element.key) {
@@ -155,7 +168,7 @@ export default function Login() {
             key: prop.id,
             value: (
               <p className={CSSProps.Login.Errormessage}>
-                This field can not be Empty!
+                {t(DictionaryProps.CantBeEmpty)}
               </p>
             ),
           },
@@ -168,7 +181,7 @@ export default function Login() {
             key: prop.id,
             value: (
               <p className={CSSProps.Login.Errormessage}>
-                This field can not be Empty!
+                {t(DictionaryProps.CantBeEmpty)}
               </p>
             ),
           },
@@ -193,6 +206,54 @@ export default function Login() {
     }
   };
 
+  var loginSucces = function (json) {
+    if (json.result) {
+      Base.prototype.setToken(json.result);
+      setToken(json.result);
+      if (IsOrder) {
+        return;
+      }
+      OnSuccesCallback(json.result);
+    }
+  };
+
+  var onFail = function (result) {
+    alert("Something went wrong");
+    OnFailCallback(result);
+  };
+
+  var login = function (u, p) {
+    handleRequest(
+      { path: ApiEndpoints.Login, method: ApiEndpoints.Methods.POST },
+      token,
+      new URLSearchParams({
+        email: u,
+        password: p,
+      }),
+      (result) => loginSucces(result),
+      (result) => onFail(result)
+    );
+  };
+
+  var order = function (user) {
+    
+    var cart = Base.prototype.getCart();
+    
+    if (cart && cart.length > 0) {
+      handleRequest(
+        { path: ApiEndpoints.Order, method: ApiEndpoints.Methods.POST },
+        token,
+        new URLSearchParams({
+          raw: JSON.stringify({ cart: cart , user: user}),
+        }),
+        (result) => OnSuccesCallback(result),
+        (result) => OnFailCallback(result)
+      );
+      return;
+    }
+    alert("Cart is empty!");
+  };
+
   const [token, setToken] = useState(null);
   useEffect(() => {}, [errors, setErrors]);
   useEffect(() => {
@@ -207,24 +268,31 @@ export default function Login() {
     return (
       <div className={CSSProps.Login.Area + shrinkPage}>
         <div className={CSSProps.Login.LoginUserBody + showLoginUser}>
-          <h1>Please Log In</h1>
-          <form onSubmit={handleLogin}>
+          <h1>{t(DictionaryProps.PleaseLogIn)}</h1>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              login(username, password);
+            }}
+          >
             <label className={CSSProps.Login.Loginlabel}>
               <div>
-                <p>Email</p>
+                <p>{t(DictionaryProps.Email)}</p>
                 <input
                   className={CSSProps.Login.El}
                   type={Constants.Types.Email}
                   onChange={(e) => setUserName(e.target.value)}
+                  required={true}
                 />
               </div>
             </label>
             <label className={CSSProps.Login.Loginlabel}>
-              <p>Password</p>
+              <p>{t(DictionaryProps.Password)}</p>
               <input
                 className={CSSProps.Login.El}
                 type={Constants.Types.Password}
                 onChange={(e) => setPassword(e.target.value)}
+                required={true}
               />
             </label>
             <label
@@ -235,25 +303,37 @@ export default function Login() {
                 setShrinkPage(CSSProps.Empty);
               }}
             >
-              <p>Register</p>
+              <p>
+                {IsOrder
+                  ? t(DictionaryProps.ContinueAsGeust)
+                  : t(DictionaryProps.Register)}
+              </p>
             </label>
             <div className={CSSProps.Login.LoginbuttonArea}>
               <button
                 className={CSSProps.Login.Loginbutton}
                 type={Constants.Types.Submit}
               >
-                Submit
+                {IsOrder ? t(DictionaryProps.Pay) : t(DictionaryProps.Login)}
               </button>
             </div>
           </form>
         </div>
         <div className={CSSProps.Login.AddUserBody + showAddUser}>
-          <h1>Please register here</h1>
-          <form onSubmit={handleRegister}>
+          <h1>
+            {IsOrder
+              ? t(DictionaryProps.EnterInfo)
+              : t(DictionaryProps.PleaseRegister)}
+          </h1>
+          <form
+            onSubmit={(event) => {
+              handleNewUser(event);
+            }}
+          >
             {RegisterModel.map((prop) => {
               return (
                 <label key={prop.id} className={CSSProps.Login.Loginlabel}>
-                  <p>{prop.languageKey}</p>
+                  <p>{t(prop.languageKey)}</p>
                   <input
                     className={CSSProps.Login.El}
                     id={prop.id}
@@ -265,6 +345,7 @@ export default function Login() {
                       validateOnLeave(e.target.value, prop);
                     }}
                     autoComplete={prop.autoComplete}
+                    required={prop.required}
                   />
                   {errors
                     .filter((error) => error.key.includes(prop.id))
@@ -278,7 +359,9 @@ export default function Login() {
                 type={Constants.Types.Submit}
                 value={Constants.Types.Submit}
               >
-                Submit
+                {IsOrder
+                  ? t(DictionaryProps.Pay)
+                  : t(DictionaryProps.Register)}
               </button>
               <button
                 className={CSSProps.Login.Loginbutton}
@@ -288,7 +371,7 @@ export default function Login() {
                   setShrinkPage(CSSProps.Login.ShrinkPage);
                 }}
               >
-                Cancel
+                {t(DictionaryProps.Cancel)}
               </button>
             </div>
           </form>
@@ -296,9 +379,16 @@ export default function Login() {
       </div>
     );
   } else {
-    setTimeout(() => {
-      history.push(Path.Home);
-    }, 1000);
-    return <div>Login</div>;
+    if(IsOrder)
+    return <div>Hi, {t(DictionaryProps.OrderAs)} {token.email}<button className={CSSProps.Login.Loginbutton} onClick={()=>order(null)}>{t(DictionaryProps.Pay)}</button></div>;
+    else
+    
+    setTimeout(()=>{
+      history.push("/");
+    },1000);
+
+    return <div></div>
   }
-}
+};
+
+export default Login;

@@ -13,7 +13,7 @@ const ArticleTable = ({
   const [datasource, setDatasource] = useState(data);
   const [pages, setPages] = useState(Math.ceil(datasource.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
-  console.log("process data:");
+  
   useEffect(() => {
     setDatasource(data);
     setPages(Math.ceil(datasource.length / dataLimit));
@@ -58,8 +58,6 @@ const ArticleTable = ({
 
   if (datasource.length === 0)
  {
-  console.log("No length data:");
-  console.log(data);
     return (
       <div className={CSSProps.ArticleTable.Area + CSSProps.Body.PaddingLR}>
         

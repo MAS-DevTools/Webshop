@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect } from "react";
 import { Base } from "../../components/Base";
 import CSSProps from "../../data/constants/CSSProps";
 import Table from "../../components/table/Table";
+import ApiEndpoints from "../../data/constants/ApiEndpoints";
 
 const Orders = () => {
   const [data, setData] = useState([]);
@@ -100,12 +101,9 @@ const Orders = () => {
   );
 
   useEffect(() => {
-    console.log("Orders use effect");
-    console.log(token);
     if (token) {
-      console.log("Fetch data");
-      fetch("http://localhost:6400/carts/user/" + token.email, {
-        method: "GET",
+      fetch(ApiEndpoints.GetUserCart + token.email, {
+        method: ApiEndpoints.Methods.GET,
         headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
           email: token.email,
@@ -114,11 +112,12 @@ const Orders = () => {
       })
         .then((res) => res.json())
         .then((json) => {
-          console.log(json);
           setData(json);
         });
     }
   }, [token]);
+
+  
   return (
     <div className="App">
       <Table columns={columns} data={data} />

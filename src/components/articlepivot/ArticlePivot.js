@@ -14,9 +14,9 @@ const ArticlePivot = (props) => {
   let count = useRef(0)
 
   function updateAmount(countChild) {
-    console.log(countChild);
+    
     count.current = countChild;
-    console.log(count.current);
+    
   }
 
   return (

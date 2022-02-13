@@ -1,4 +1,4 @@
-export const RegisterModel = [
+export const GeustModel = [
     {
        "id":"email",
        "type":"string",
@@ -8,24 +8,6 @@ export const RegisterModel = [
        "level1":"email",
        "level2":null
     },
-    {
-       "id":"password",
-       "type":"password",
-       "languageKey":"Password",
-       "autoComplete":"new-password",
-       "required":true,
-       "level1":"password",
-       "level2":null
-    },
-    {
-      "id":"confirmPassword",
-      "type":"password",
-      "languageKey":"ConfirmPassword",
-      "autoComplete":"current-password",
-      "required":true,
-      "level1":"password",
-      "level2":null
-   },
     {
        "id":"firstname",
        "type":"string",
@@ -43,15 +25,6 @@ export const RegisterModel = [
        "required":true,
        "level1":"name",
        "level2":"lastname"
-    },
-    {
-       "id":"birthday",
-       "type":"date",
-       "languageKey":"Birthday",
-       "autoComplete":"bday",
-       "required":true,
-       "level1":"birthday",
-       "level2":null
     },
     {
        "id":"city",

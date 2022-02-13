@@ -14,7 +14,7 @@ const LogOut = () => {
       window.location.reload(true);
     }, 2000);
   });
-  return <div>LogOut</div>;
+  return <div><center><h1>Bye!</h1></center></div>;
 };
 
 export default LogOut;

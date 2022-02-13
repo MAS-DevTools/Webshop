@@ -39,10 +39,6 @@ const MultiSlider = ({ min, max, onChange, onMouseUp }) => {
     setMaxVal(max);
   },[ min, max])
 
-  
-  console.log("Slider min >" + min +" max > "+max);
-  console.log("Slider minVal >" + minVal +" maxVal > "+maxVal);
-  console.log("Slider minValRef >" + minValRef.current +" maxValRef > "+maxValRef.current);
   // Convert to percentage
   const getPerctent = useCallback(
     (value) => {
@@ -63,7 +59,6 @@ const MultiSlider = ({ min, max, onChange, onMouseUp }) => {
       }
     }
     
-    console.log("useEffect1");
   }, [minVal, min, max, getPerctent]);
 
   // Set width of the range to decrease from the right side
@@ -76,17 +71,17 @@ const MultiSlider = ({ min, max, onChange, onMouseUp }) => {
         range.current.style.width = `${maxPercent - minPercent}%`;
       }
     }
-    console.log("useEffect2");
+    
   }, [maxVal, min, max, getPerctent]);
 
   // Get min and max values when their state changes
   useEffect(() => {
     onChange({ min: minVal, max: maxVal });
-    console.log("useEffect3");
+    
   }, [minVal, maxVal, onChange]);
 
   function ValueChanged() {
-    console.log("value changed");
+    
     onMouseUp({ min: minVal, max: maxVal });
   }
 

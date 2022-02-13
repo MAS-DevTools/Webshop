@@ -20,7 +20,6 @@ class Article extends React.Component {
   }
 
   updateAmount(count) {
-    console.log(count);
     this.setState({
       count :count,
     })

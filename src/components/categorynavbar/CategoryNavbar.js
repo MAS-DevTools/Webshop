@@ -7,7 +7,6 @@ import AppSettings from "../../data/AppSettings";
 import CategoryNavItem from "./controls/CategoryNavItem";
 import Paths from "../../data/constants/Paths";
 import ApiEndpoints from "../../data/constants/ApiEndpoints.js";
-import LogMessage from "../../data/constants/LogMessageProps.js";
 import BarLoader from "react-spinners/BarLoader";
 import { css } from "@emotion/react";
 
@@ -36,7 +35,6 @@ const CategoryNavbar = () => {
         setProducts(data);
       })
       .catch((exception) => {
-        console.log(LogMessage.FetchFailed, exception);
         setError(exception);
       })
       .finally(() => {

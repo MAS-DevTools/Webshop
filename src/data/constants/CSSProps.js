@@ -180,8 +180,6 @@ const CSSProps = {
     HideLoginUser:"hideLoginUser ",
     LoginbuttonArea:"loginbuttonArea ",
     Loginbutton:"loginbutton ",
-    AddUserBody:"addUserBody ",
-    ShrinkPage:"shrinkPage ",
     Errormessage:"errormessage "
   }
 };

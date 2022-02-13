@@ -57,6 +57,9 @@
 }
 
 .loginbutton{
+ 
+    background-color: var(--gray5);
+    color:white;
      display: grid;
      border: none;
      min-height: 2em;

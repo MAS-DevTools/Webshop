@@ -58,6 +58,7 @@ small {
 
   .articlepivot-figure {
     max-width: 15em;
+    padding: 1rem 1rem 1rem 1rem;
   }
 
   .articlepivot-image {

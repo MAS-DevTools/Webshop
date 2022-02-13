@@ -3,6 +3,7 @@ export let User = {
     email: "",
     username: "",
     password: "",
+    birthday: null,
     name: {
       firstname: "",
       lastname: "",

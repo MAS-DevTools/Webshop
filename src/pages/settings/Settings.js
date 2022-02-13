@@ -8,9 +8,54 @@ import Constants from "../../data/constants/Constants";
 
 const Settings = () => {
   const [errors, setErrors] = useState([]);
-  
+  const [currentUser, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
-  function handleRegister(event) {
+  useEffect(() => {
+    setTimeout(() => {
+      Base.prototype.SwitchPage(CSSProps.ID.Settings);
+    }, 500);
+  });
+
+  useEffect(() => {
+    if (token) {
+      fetch("http://localhost:6400/users/" + token.email, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          email: token.email,
+          token: token.token,
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          setUser(json);
+        });
+    }
+  }, [token]);
+
+  function handleDelete(event) {
+    fetch("http://localhost:6400/users/" + token.email, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        email: token.email,
+        token: token.token,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        
+
+        if (json) {
+          Base.prototype.setToken(null);
+          setUser(null);
+          window.location.reload();
+        }
+      });
+  }
+
+  function handleUpdate(event) {
     let arr = [];
     RegisterModel.forEach((x) => {
       if (Validator.prototype.isEmpty(document.getElementById(x.id).value)) {
@@ -71,9 +116,32 @@ const Settings = () => {
     User.address.zipcode = document.getElementById(
       Constants.RegiterModel.Zipcode
     ).value;
+    User.birthday = document.getElementById(
+      Constants.RegiterModel.Birthday
+    ).value;
     User.phone = document.getElementById(Constants.RegiterModel.Phone).value;
-    //registerUser(User);
-    alert("Succes!");
+    fetch("http://localhost:6400/users/" + token.email, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        email: token.email,
+        token: token.token,
+      },
+      body: new URLSearchParams({ raw: JSON.stringify(User) }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+
+        if (json) {
+          Base.prototype.setToken(json.token);
+          setUser(json.user);
+          alert("Succes!");
+          window.location.reload();
+          return;
+        }
+        alert("Something went wrong!");
+      });
+
     event.preventDefault();
     return;
   }
@@ -138,14 +206,6 @@ const Settings = () => {
     }
   };
 
-  const [token, setToken] = useState(null);
-
-  useEffect(() => {
-    setTimeout(()=>{
-      Base.prototype.SwitchPage(CSSProps.ID.Settings);
-    },500);
-  });
-
   useEffect(() => {
     Base.prototype.getToken().then((result) => {
       if (token === null || (token && !result)) {
@@ -154,55 +214,66 @@ const Settings = () => {
     });
   }, [token, setToken]);
 
-  if (token) {
-  return (
-  <div>
-
-          <form onSubmit={handleRegister}>
+  if (token && currentUser) {
+    return (
+      <div>
+        <form onSubmit={handleUpdate}>
           <h1>Please register here</h1>
-            {RegisterModel.map((prop) => {
-              return (
-                <label key={prop.id} className={CSSProps.Settings.Loginlabel}>
-                  <p>{prop.languageKey}</p>
-                  <input
-                    className={CSSProps.Settings.El}
-                    id={prop.id}
-                    type={prop.type}
-                    onChange={(e) => {
-                      validateInput(e.target.value, prop);
-                    }}
-                    onBlur={(e) => {
-                      validateOnLeave(e.target.value, prop);
-                    }}
-                    autoComplete={prop.autoComplete}
-                  />
-                  {errors
-                    .filter((error) => error.key.includes(prop.id))
-                    .map((e) => e.value)}
-                </label>
-              );
-            })}
-            <div className={CSSProps.Settings.LoginbuttonArea}>
-              <button
-                className={CSSProps.Settings.Loginbutton}
-                type={Constants.Types.Submit}
-                value={Constants.Types.Submit}
-              >
-                Submit
-              </button>
-              <button
-                className={CSSProps.Settings.Loginbutton}
-                onClick={() => {
-         
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
-  </div>);
-  }else{
-    
+          {RegisterModel.map((prop) => {
+            var value = null;
+            if (prop.level2) {
+              var level1 = currentUser[prop.level1];
+              if (level1) {
+                value = level1[prop.level2];
+              }
+            } else {
+              value = currentUser[prop.level1];
+            }
+
+            return (
+              <label key={prop.id} className={CSSProps.Settings.Loginlabel}>
+                <p>{prop.languageKey}</p>
+                <input
+                  className={CSSProps.Settings.El}
+                  id={prop.id}
+                  type={prop.type}
+                  onChange={(e) => {
+                    validateInput(e.target.value, prop);
+                  }}
+                  onBlur={(e) => {
+                    validateOnLeave(e.target.value, prop);
+                  }}
+                  autoComplete={prop.autoComplete}
+                  defaultValue={value}
+                  required={prop.required}
+                />
+                {errors
+                  .filter((error) => error.key.includes(prop.id))
+                  .map((e) => e.value)}
+              </label>
+            );
+          })}
+          <div className={CSSProps.Settings.LoginbuttonArea}>
+            <button
+              className={CSSProps.Settings.Loginbutton}
+              type={Constants.Types.Submit}
+              value={Constants.Types.Submit}
+            >
+              Submit
+            </button>
+            <button
+              className={CSSProps.Settings.Loginbutton}
+              onClick={(e) => {
+                handleDelete(e);
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  } else {
     return <div>Settings</div>;
   }
 };

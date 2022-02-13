@@ -3,10 +3,16 @@ import React, { useEffect, useState } from "react";
 import { Base } from "../../components/Base";
 import CSSProps from "../../data/constants/CSSProps";
 import Paths from "../../data/constants/Paths";
+import GeustLogin from "../../components/geustlogin/GeustLogin";
+import { useTranslation } from "react-i18next";
+import AppSettings from "../../data/AppSettings";
+import DictionaryProps from "../../data/constants/DictionaryProps";
 
 const Cart = () => {
+
+  const [t] = useTranslation(AppSettings.TranslationFilename);
   let [products, setProducts] = useState([]);
-  console.log("reloaded cart");
+  
   useEffect(() => {
     Base.prototype.SwitchPage(CSSProps.ID.Cart);
   });
@@ -35,18 +41,13 @@ const Cart = () => {
   }
 
   function handleAmountChange(product) {
-    console.log("handleAmountChange");
-    console.log(product);
-
     for (let i = 0; i < products.length; i++) {
-      console.log(products[i].id);
-      console.log(product.id);
+
       if (products[i].id === product.id) {
         if (product.quantity === 0) {
-          console.log("found artikel");
           products.splice(i, 1);
         } else {
-          console.log("found artikel amount " + product.quantity);
+        
           products[i].quantity = product.quantity;
         }
         localStorage.setItem("cart", JSON.stringify(products));
@@ -59,9 +60,11 @@ const Cart = () => {
     }
   }
 
-  if(products === undefined || products?.length ===0 ||products === null){
+  if (products === undefined || products?.length === 0 || products === null) {
     return (
-      <section aria-hidden="true" className="PQw8h"><center>Cart is empty</center></section>
+      <section aria-hidden="true" className="PQw8h">
+        <center>{t(DictionaryProps.CartEmpty)}</center>
+      </section>
     );
   }
 
@@ -71,13 +74,13 @@ const Cart = () => {
         <table border="2">
           <thead>
             <tr>
-              <th>Cart</th>
-              <th>Product id</th>
-              <th>Quantity</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Discount</th>
-              <th>Total</th>
+              <th>{t(DictionaryProps.Image)}</th>
+              <th>{t(DictionaryProps.ProductId)}</th>
+              <th>{t(DictionaryProps.Quantity)}</th>
+              <th>{t(DictionaryProps.Name)}</th>
+              <th>{t(DictionaryProps.Price)}</th>
+              <th>{t(DictionaryProps.Discount)}</th>
+              <th>{t(DictionaryProps.Total)}</th>
             </tr>
           </thead>
           <tbody>
@@ -151,8 +154,16 @@ const Cart = () => {
             })}
           </tbody>
         </table>
-        <div className="cartTotal">Subtotal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{getSubtotal()}</div>
-        <div className="cartTotal">Total discount&nbsp;&nbsp;&nbsp;{getTotalDiscount()}</div>
+        <div className="cartTotal">
+          {t(DictionaryProps.Total)}&nbsp;&nbsp;&nbsp;
+          {getSubtotal()}
+        </div>
+        <div className="cartTotal">
+        {t(DictionaryProps.Discount)}&nbsp;&nbsp;&nbsp;{getTotalDiscount()}
+        </div>
+
+        <GeustLogin/>
+        
       </div>
     </div>
   );
